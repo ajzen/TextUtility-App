@@ -9,29 +9,36 @@ export default function TextForm(props) {
         let newText = myText.toUpperCase();
         setText(newText);
         console.log("Upper case button clicked");
+        props.showAlert("Converted to upper case", alertSuccessType);
     }
 
     const lowercaseButtonHandleOnClick = () => {
         let newText = myText.toLowerCase();
         setText(newText);
         console.log("Lower case button clicked");
+        props.showAlert("Converted to lower case", alertSuccessType);
     }
 
     const clearTextButtonHandleOnClick = () => {
         let newText = '';
         setText(newText);
         console.log("Clear text button clicked");
+        props.showAlert("cleared text", alertSuccessType);
     }
 
     const handleOnChange = (event) => {
         setText(event.target.value);
-        console.log("Text handle on change : " + myText)
+        console.log("Text handle on change : " + myText);    
     }
     const copyTextHandleOnClick = () => {
         const txtToCopy = document.getElementById("textBoxId");
         txtToCopy.select();
         navigator.clipboard.writeText(myText);
+        props.showAlert("Copied text", alertSuccessType);
     }
+
+    const alertDefaultmsg = "Funtionality is done";
+    const alertSuccessType = "success";
 
   return (
     
