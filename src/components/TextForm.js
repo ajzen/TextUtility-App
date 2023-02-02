@@ -40,11 +40,19 @@ export default function TextForm(props) {
     const alertDefaultmsg = "Funtionality is done";
     const alertSuccessType = "success";
 
+    const countWords = () => {
+        let wordCount = 0;
+        wordCount = myText.split(' ')                                        
+                        .filter(word => word.trim().length > 0)
+                        .length;
+        return wordCount;
+    }
+
   return (
     
     <>
-    <div style={{backgroundColor : props.mode === "light" ? "white" : "#212529", color : props.mode === "light" ? "#212529" : "white"}}>
-        <h1>{props.heading}</h1>
+    <div className="container" style={{backgroundColor : props.mode === "light" ? "white" : "#212529", color : props.mode === "light" ? "#212529" : "white"}}>
+        <h2>{props.heading}</h2>
         <div className={`mb-3 container text-${props.mode === "light" ? "dark" : "light"}`}>
             <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
             <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" style={{backgroundColor : props.mode === "light" ? "white" : "#212529", color : props.mode === "light" ? "#212529" : "white"}}/>
@@ -61,7 +69,7 @@ export default function TextForm(props) {
 
         < div className="container">
             <p>
-                Text has {myText.split(' ').length} words and {myText.length} characters
+                Text has {countWords()} words and {myText.length} characters
             </p>    
             <p>
                 Text will take {myText.length*0.008} minutes to read the text
